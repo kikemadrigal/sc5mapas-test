@@ -12,7 +12,8 @@
             30130 read a$
             30140 'PRINT#1,VAL(a$);
             30150 mt=VAL(a$)
-            30160 if mt=0 then copy (c*16,f*16)-((c*16)+16,(f*16)+16),1 to (c*16,f*16) 
+            30170 ' bucle que recorre los tiles''
+            30160 if mt=0 then copy (0*16,0*16)-((0*16)+16,(0*16)+16),1 to (c*16,f*16) 
         30210 next c
     30220 next f
 30230 'next i
