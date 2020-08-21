@@ -1,0 +1,94 @@
+1 ' ------------------------------------'
+1 '     Loader - inicializador          '
+1 ' ------------------------------------'
+
+
+
+
+1 ' Inicilizamos dispositivo: 003B, inicilizamos teclado: 003E, inicializamos el psg'
+10 defusr=&h003B:a=usr(0):defusr1=&h003E:a=usr1(0):defusr2=&h0090:a=usr2(0)
+20 COLOR15,0,0:SCREEN5,2:COLOR15,1,1
+
+1 ' Mostramos la pantalla de carga'
+
+30 OPEN"grp:"AS#1:COLOR15:PRESET(0,10):PRINT#1,"Cargando...":close #1
+40 cls:bload "tileset.bin", s, 32768
+1 ' Definicimos la estructura de nuestras entidades'
+
+
+1 ' Definimos nuestro mapa o niveles'
+
+
+
+
+1 ' Cargamos nuestros gráficos'
+1000 'gosub 9700
+1010 'gosub 9800
+1 '1020 goto 1020
+
+
+1 ' Cargamos nuestros sprites'
+
+
+
+1 ' Cargamos el main'
+3000 load "game.bas",r
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+9700 SETPAGE0,0:CLS
+    9710 CL$="u4h10uhu2eue2d2f12dfdgdg3":LINE(24,1)-(30,41),12,BF:DRAW"c2s4bm31,41xcl$;bm31,23xcl$;":PAINT(32,20),3,2:PAINT(32,38),3,2
+    9720 DRAW"c8s4bm50,15r9f2g2l3d4l2u4l5e2h2":PAINT(53,17),8
+    9730 CIRCLE(70,4),4,11,,,.4:PAINTSTEP(0,0),11:DRAW"c11s6bm66,4d32r6u32":PAINT(69,10),8,11:FORR=2TO4STEP2:CIRCLE(72,20),R,1,,,2.5:CIRCLE(70,36),R,11,,,2.5:NEXT
+    9740 DRAW"c8s6bm90,1r2frf2dfreue2r2dg2d2r2eue2r2d2lgdg4d5fd4gd2fdf2l11e4u2eu2hu5hu2hu2h5":PAINT(92,2),8:FORR=1TO3STEP2:CIRCLE(103,17),R,1,,,2.5:CIRCLE(104,30),R,1,,,2.6:NEXT
+    9750 COPY(89,0)-(115,39)TO(140,25):FORR=140TO167:CIRCLE(R,RND(1)*25+15),4,12:NEXT
+    9760 FORT=4TO252STEP8:FORR=0TO5STEP2:CIRCLE(T,100),R,8:NEXT:NEXT:LINE(0,98)-(0,85),8:LINE-(256,85),8:LINE-(256,98),8:PAINT(10,87),11,8:FORR=8TO248STEP8:LINE(R,100)-(R,85),8:NEXT
+    9770 DRAW"c11s4bm200,10d5fdfdfd2frfdre4ue2ue2re2u3l18":PAINT(210,12),11:FORR=202TO214:PSET(R,RND(1)*10+13),1:NEXT
+    9790 DRAW"c2s4bm230,20huh3ur2f3eu3h2ur2f2d3fre2r2dfl2g2l2g2l3":PAINT(233,19),12,2
+    9800 DIMB$(30):RESTORE11100:FORI=0TO29:READB$(I):FORR=0TO15:C=VAL("&H"+MID$(B$(I),R+1,1)):PSET(R+70,I+123),C:NEXT:NEXT:ERASEB$
+    9890 DIMB$(8):RESTORE 11145:FORI=0TO7:READB$(I):FORR=0TO15:C=VAL("&H"+MID$(B$(I),R+1,1)):PSET(R,I+65),C:NEXT:NEXT:ERASEB$
+    9900 DIMB$(8):RESTORE 11140:FORI=0TO7:READB$(I):FORR=0TO15:C=VAL("&H"+MID$(B$(I),R+1,1)):PSET(R+220,I+40),C:NEXT:NEXT:ERASEB$
+    9910 LINE(0,120)-(60,140),0,BF:FORR=10TO40STEP10:CIRCLE(R,130),RND(1)*4+6,14:PAINTSTEP(0,0),14:NEXT
+    9920 PI=16*ATN(1):FORR=12TO42STEP10:CIRCLE(R,RND(1)*7+126),6,0,PI/8,4,1.5:NEXT
+    9930 DRAW"c4bm80,200u5h2r5g2d5":DRAW"c6bm78,192r6u5euhg3hg2d3":PAINT(80,190),10,6:A=120
+    9940 FORR=110TO172STEP2:PSET(R,A),2:PSET(R+1,A+1),12:NEXT:A=A+2:IFA>140THEN9940ELSE9950
+    9950 FORR=110TO172:LINE(R,120)-(R,120+RND(1)*3+5),3:NEXT:DRAW"c6bm190,120r6f2d4g2l6h2u4e":PAINTSTEP(0,3),6:DRAW"bm192,122c1d4r2"
+    9960 DRAW"c14bm31,165l2hl8glglg5d2r4er2er6dglg7lgr5ererere2r3u10":PAINT(28,168),6,14:CIRCLE(25,167),4,14,,,.4:PAINTSTEP(0,0),10,14:FORT=33TO48STEP5:CIRCLE(T,170),7,14,,,3:PAINTSTEP(0,0),13,14:NEXT:IN=0:FORT=172TO186STEP6:CIRCLE(53,T),4,14,,,1.5
+    9970 PAINTSTEP(0,0),13,14:NEXT:FORT=48TO40STEP-4:CIRCLE(T,190+IN),4,14:IN=IN+5:PAINTSTEP(0,0),13,14:NEXT:DRAW"c14s4bm35,200l2gl2gl2r2fr2fr2u4":PAINT(34,201),10,14
+    9980 DRAW"C3BM150,200H3U22E3R34F3D22G3L34":PAINT(155,190),3:FORR=153TO184STEP2:PSET(R,180+RND(1)*22),1:NEXT
+    9990 DRAW"C7BM120,190ND15NG11NL15NH11NU15NE11NR15NF11":CIRCLE(120,190),10,14,,,1:PAINTSTEP(3,1),5,14:COLOR=(5,2,2,2):COLOR=(14,3,3,3):COLOR=(7,3,3,3)
+    10000 DRAW"C14S8BM226,150L8GLG2D2G6D2R3F2D2E3R3FDG2LGLG2D2FR8ERE4UEU2EU11H3L":PAINT(216,155),14:FORR=186TO226:PSET(R,RND(1)*50+152),1:NEXT:CIRCLE(211,163),7,1,,,.6:PAINTSTEP(0,0),8,1
+    10010 DRAW"C6S4BM222,150R30DG4NL10DF2DG4NL8DF2DG4NL6DG4LGLG3H13U16":PAINT(241,153),6
+10020 RETURN
+
+11100 DATA 3033030333030330,3333333333333333,3333333333333333,3333333333333333,3333333333333333,bb3b1b3b133bbb33,1bb1bbbb1bbbb111,b111bbbbb1b11bbb,bbbb1bbbbb1bbbbb,bbbbb1bbb1bbbbbb,bbbbbb111bbbbbbb,bbbbb1bbb1bbbbbb,bbbb1bbbbb1bbbbb
+11120 DATA bbb1bbbbb1b11bbb,bb1bbbbb1bbbb1bb,11bbbbb1bbbbbb11,bbbbb111bbbbb1bb,bbbb1bbb1bbb1bbb,b111bbbbb111bb1b,1bbb1bbbbbbb11b1,bbbb1bbbbbbb1bbb,bbbbb1bbbbbb1bbb,bbbbbb1bbbb1bbbb,bbbbbbb1111b1bbb,bbbbbbb1bbbb1bbb,bbbbbb1bbbbbb1bb,bbbbbb1bbbbbb1bb
+11130 DATA bbbbbb1bbbbbb11b,1bbbbb1bbbbbbb1,11bb1b11bb1bbb11
+11140 DATA 11eeeeee111eeee1,1eeeeeeee1eeeeee,1eeeeee1e1eeeeee,1eeeee1ee1eeee1e,1eeee1e1e1eee1ee,1eee1e1ee1ee1e1e,1eeeeeeee1eee1ee,11eeeeee111eeee1
+11145 DATA 11ccccccccccccc1,1ccccccccccccccc,1cccccccccccc5cc,1cccccccccc5c5cc,1ccccccccc5c5ccc,1cccccc5c5c5c5cc,1ccc5c5c5c5c5ccc,11ccccccccccccc1
+
+
+
+
+9800 bload"tileset2.bin",s,32768
+9810 return
+
+
+
+
+1'
+
+
+
+
