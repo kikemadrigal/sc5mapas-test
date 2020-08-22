@@ -9,7 +9,8 @@
     30000 ms=0:mm=1:tn=-1:ts=0:tf=0:tc=0
     30010 dim m(12,15,mm-1)
 30020 return
-    30100 for f=0 to 12
+    30100 'color 15,2,2
+    30110 for f=0 to 12
         30120 for c=0 to 15
             30130 read a$ 
             30150 m(f,c,ms)=VAL(a$)

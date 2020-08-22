@@ -68,7 +68,8 @@
 
 1' funcion guardar los tiles que hemos guardado como data en un array
     1 ' ahora leemos las filas f'
-    30100 for f=0 to 12
+    30100 'color 15,2,2
+    30110 for f=0 to 12
         1 ' ahora leemos las columnas c
         30120 for c=0 to 15
             30130 read a$ 
