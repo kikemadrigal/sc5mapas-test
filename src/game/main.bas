@@ -87,7 +87,8 @@
         30310 'tn=tn+1
         30320 for c=0 to 15
             30330 tn=m(f,c,ms)  
-            1 ' Si es un arcbol que está en el tileset 0 (columna 0, fila 0)'
+            1 ' Para referenciar cada tile en el tileset (lo que hemos pegado en la page 1)
+            1 ' cogeremos su número de tile tn y cada 16 tiles será otra fila, lo pegaremos en la columna c, fila f'
             30340 if tn <= 15 then copy (tn*16,0*16)-((tn*16)+16,(0*16)+16),1 to (c*16,f*16)
             30350 if tn>15 and tn <=31 then copy ((tn-16)*16,1*16)-(((tn-16)*16)+16,(1*16)+16),1 to (c*16,f*16)
             30360 if tn>31 and tn <=47 then copy ((tn-32)*16,2*16)-(((tn-32)*16)+16,(2*16)+16),1 to (c*16,f*16)
